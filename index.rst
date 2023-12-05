@@ -144,9 +144,9 @@ This may also be of use to other notebook repo maintainers.
 Write-Only
 ----------
 
-**Before:** Notebook
+**Before:** Notebooks are checked out write-only in nublado to avoid conflicts
 
-**After:**
+**After:** Tutorial-notebooks continue to be write-only (this has saved a lot of support headaches) but system-test notebooks can be read-write to allow for easier guided troubleshooting.
 
 Directories
 -----------
@@ -158,6 +158,35 @@ Directories
 **Discussion:** It would be nice to have a top-level directory structure for multiple runable repos, particularly for the data curation notebooks.
 This is not terribly important.
 
+Summit
+------
+
+**Before:** Mobu does not run at the summit
+
+**After:** There are system-test notebooks that probe basic "telescope" functionality (eg communication with DDS)
+
+**Discussion:** These had better be passive, we don't want to move the telescope or anything.... We should check what if any protections there are for this, eg is there further authorisation required to perform certain tasks
+
+Timing
+------
+
+**Before:** We have no timing information related to whole-notebook runs or per-cell runs
+
+**After:** Notebook and/or cell execution time can be monitored for duration
+
+**Discussion:** This has been controversial in discussion with the reasonable argument that notebook execution relies on too many factors and excursions from the norm are not determinative. The other side of the argument is that metrics would indicate the statistical as-is user experience for execution times and can provide at least coarse statistics (if not for alerting, at least for inspection).
+
+Any metrics should arguably be dispatched to sasquatch for monitor dogfooding purposes
+
+
+Recommended
+-----------
+
+**Before:** There is no automated checking of future recommended candidates
+
+**After:** A candidate recommended starts being mobu'ed (at least on data-int) as soon as it is identified
+
+**Discussion:** This is easily achieved technically - question is how to indicate this. Another container tag?
 
 
 
