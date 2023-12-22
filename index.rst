@@ -96,7 +96,21 @@ For example, if at the La Serena base deployment nublado is set to true in the e
 mobu would run the nublado notebooks but not attempt the tap one.
 
 The advantage of this approach is that developers can check in new notebooks for services without necessitating mobu changes.
-Note that currently mobu caches notebooks on start-up and needs to be restarted to pick up new notebooks; an API call or other method to induce a running mobu to re-poll its notebook repos would be useful (but not critical).
+
+Notebook caching (or not)
+-------------------------
+
+**Before:** Notebook caches notebooks and needs to be restarted to pick up new notebooks.
+
+**After:** Mobu payload Github repos have a webhook that pushes a command to mobu's API to refresh a newly merged Notebook
+
+**Discussion:**
+
+We don't want to continuously poll Github from mobu because it will slam the API when we use mobu for scale testing.
+We could manually invoke an API or refresh on a timer, but a notebook on-merge is more elegant.
+
+We still need to re-read on mobu (re-)start; this will be the only way to pick up notebook changes in sites without in-bound internet (eg the summit).
+It is a feature for the summit mobu's behavior to remain stable until manual intervention in any case.
 
 Reliance on specific data holdings
 ----------------------------------
