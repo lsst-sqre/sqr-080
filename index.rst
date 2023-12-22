@@ -126,7 +126,7 @@ While there is merit to this idea, in practice finding the effort to curate such
 With the advent of the tutorial-notebooks repo, the requirement for performing substantive computations and/or service load has been eliminated from system-test.
 With the proposed data curation notebooks, that require specific data holdings can live elsewhere.
 To the extent that this is practical, system-test service notebooks should be written with a data discovery or data check step to see what data is available (eg. in terms of available catalogs, tap_schema could be queried first to make sure unavailable catalogs are not being requested).
-In practice this is may be an aspirational requirement.
+However since we ultimately plan to implement a data discovery service which will expand what is possible here, there is no need to implement more than some basic notebook-level logic (such as "is there a butler repo here I can use, yes okay use that") at the present time when easy to do so.
 
 Branches
 --------
