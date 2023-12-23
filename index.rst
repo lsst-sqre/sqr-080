@@ -155,12 +155,22 @@ Ideally something like https://github.com/srstevenson/nb-clean would be integrat
 This may also be of use to other notebook repo maintainers.
 
 
-Write-Only
-----------
+Write-Only (or not)
+-------------------
 
 **Before:** Notebooks are checked out write-only in nublado to avoid conflicts
 
-**After:** Tutorial-notebooks continue to be write-only (this has saved a lot of support headaches) but system-test notebooks can be read-write to allow for easier guided troubleshooting.
+**After:** Tutorial-notebooks continue to be write-only (this has saved a lot of support headaches) and automatically checked out for rapid onboarding, while system-test notebooks can be read-write to allow for easier guided troubleshooting but only checked out on demand
+
+**Discussion:**
+
+We have struggled with this trade-off before where we want to give users the best and latest turtorials but also not trash any work that they may have in progress. Earlier we experimented by trying to resolve any such conflicts but this turned out not be 100% reliable. The compromise for tutorial notebooks is to check them out read only in people's containers and guide them to make their own copy or checkout if they wish to modify them.
+
+For other notebook types this is less satisfactory, especially with notebooks whose purpose might include involving being modified, which are unlikely to be changed by the user, whose presence on a science user's home space might be confusing or whose target is a more advanced user who can resolve their own conflicts.
+Since these notebooks are by definition nublado notebooks, it makes sense to provide a menu option in our Jupyterlab UI extension to check out a fresh set, including warning that any currently checked out set will be overwritten.
+This means a user will have easy access to these additional repos without cluttering out their home space or having to resolve conflicts.
+
+Mobu bot users check notebooks directly from Github and hence will not be affected by this.
 
 Directories
 -----------
