@@ -175,12 +175,19 @@ Mobu bot users check notebooks directly from Github and hence will not be affect
 Directories
 -----------
 
-**Before:** Mobu runs notebooks at the root level of repos [?]
+**Before:** Mobu runs notebooks only at the root level of repos
 
-**After:** Indicate to mobu whether to run a subdirectory (through eg. a .run file)
+**After:** Run all notebooks, but skip notebooks in a directory included in an exclusion list.
 
-**Discussion:** It would be nice to have a top-level directory structure for multiple runable repos, particularly for the data curation notebooks.
-This is not terribly important.
+**Discussion:**
+
+There are a number of ways one can designate which notebooks are to be run (or not).
+Reasons for opting for a directory exclusion list include:
+
+- If you do nothing everything will run (it's a mobu payload repo - not running is the exception)
+- Right now people put not-for-running (in development, deliberate error condition) notebooks in a directory to keep it away from mobu but with increasing content the top level is getting crowded
+- An exclusion manifest at directory granularity is less hassle than per-notebook (less bookkeeping when renaming, etc)
+- Whether to run or not is self-serve for repo maintainers and does not involve phalanx PRs.
 
 Summit
 ------
