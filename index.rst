@@ -4,12 +4,6 @@
 
 .. Metadata such as the title, authors, and description are set in metadata.yaml
 
-.. TODO: Delete the note below before merging new content to the main branch.
-
-.. note::
-
-   **This technote is a work-in-progress.**
-
 Abstract
 ========
 
@@ -82,7 +76,9 @@ Service-specific checks
 
 **After:** By leveraging a naming convention that matches the application name in phalanx, mobu uses the ArgoCD UI or the environment manifest to only run notebooks corresponding to deployed services.
 
-**Discussion:** We want a more fine-grained way of running only notebooks that are expected to complete successfully.
+**Discussion:**
+
+We want a more fine-grained way of running only notebooks that are expected to complete successfully.
 However an opt-in approach of creating manifests of specific notebooks in a repo (or a proxy of the same result, such as having mobu run off different branches in different environments) is a maintenance headache.
 If instead we adopt a naming convention for notebooks that match the ArgoCD application name, mobu can be modified to run all notebooks from participating services.
 For example, if at the La Serena base deployment nublado is set to true in the environment yaml and tap is set to false and there were notebooks in system-test named
@@ -196,7 +192,9 @@ Summit
 
 **After:** There are system-test notebooks that probe basic "telescope" functionality (eg communication with DDS)
 
-**Discussion:** These had better be passive, we don't want to move the telescope or anything.... We should check what if any protections there are for this, eg is there further authorisation required to perform certain tasks
+**Discussion:**
+
+These had better be passive, we don't want to move the telescope or anything.... We should check what if any protections there are for this, eg is there further authorisation required to perform certain tasks
 
 Timing
 ------
@@ -205,7 +203,9 @@ Timing
 
 **After:** Notebook and/or cell execution time can be curated and monitored in Sasquatch.
 
-**Discussion:** This has been controversial in discussion with the reasonable argument that notebook execution relies on too many factors and excursions from the norm are not determinative. The other side of the argument is that metrics would indicate the statistical as-is user experience for execution times and can provide at least coarse statistics (if not for alerting, at least for inspection).
+**Discussion:**
+
+This has been controversial in discussion with the reasonable argument that notebook execution relies on too many factors and excursions from the norm are not determinative. The other side of the argument is that metrics would indicate the statistical as-is user experience for execution times and can provide at least coarse statistics (if not for alerting, at least for inspection).
 
 Any metrics should arguably be dispatched to Sasquatch for self-evident dogfooding purposes.
 
