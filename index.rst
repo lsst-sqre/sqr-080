@@ -108,6 +108,8 @@ We could manually invoke an API or refresh on a timer, but a notebook on-merge i
 We still need to re-read on mobu (re-)start; this will be the only way to pick up notebook changes in sites without in-bound internet (eg the summit).
 It is a feature for the summit mobu's behavior to remain stable until manual intervention in any case.
 
+
+
 Reliance on specific data holdings
 ----------------------------------
 
@@ -221,6 +223,19 @@ Recommended
 
 We already mobu the latest (most recent) weekly; the problem is that due to the time it takes to identify, test and deploy a new recommended image, the latest weekly is no longer the candidate recommended.
 Given the amount of human attention involved in bumping recommended, adding the candidate to a mobu configuration explicitly is no less expedient that engineering a specific pattern such as tagging the container.
+
+Mobu as CI
+----------
+
+**Before:** If someone breaks a notebook in a mobu payload repo we only find out after mobu runs on the merged
+
+**After:** Mobu is registered as a CI hook and notebooks (eg tutorials) have to run green before merge
+
+**Discussion:**
+
+Humans are doing right now what the computer can do.
+We want to allow notebook contributors to see errors before they go to production.
+
 
 .. Make in-text citations with: :cite:`bibkey`.
 .. Uncomment to use citations
