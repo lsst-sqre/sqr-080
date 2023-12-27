@@ -201,13 +201,13 @@ Summit
 Timing
 ------
 
-**Before:** We have no timing information related to whole-notebook runs or per-cell runs
+**Before:** We have no timing information related to whole-notebook runs or per-cell runs (mobu collects it and exposes it via its API but it's not stored for easy access / monitoring)
 
-**After:** Notebook and/or cell execution time can be monitored for duration
+**After:** Notebook and/or cell execution time can be curated and monitored in Sasquatch.
 
 **Discussion:** This has been controversial in discussion with the reasonable argument that notebook execution relies on too many factors and excursions from the norm are not determinative. The other side of the argument is that metrics would indicate the statistical as-is user experience for execution times and can provide at least coarse statistics (if not for alerting, at least for inspection).
 
-Any metrics should arguably be dispatched to sasquatch for monitor dogfooding purposes
+Any metrics should arguably be dispatched to Sasquatch for self-evident dogfooding purposes.
 
 
 Recommended
