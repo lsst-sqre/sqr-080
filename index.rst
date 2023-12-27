@@ -236,6 +236,19 @@ Mobu as CI
 Humans are doing right now what the computer can do.
 We want to allow notebook contributors to see errors before they go to production.
 
+Mobu's role in phalanx
+----------------------
+
+**Before:** Mobu is an "add-on" phalanx service (it's not required in the minimal deploy)
+
+**After:** Mobu is a phalanx "core" service and participates in the bootstrap deploy
+
+**Discussion:**
+
+Up to now, mobu has been seen as an optional convenience service whose main function is to perform specific service tests, primarily for nublado and qserv.
+With the increased outside interest in phalanx as an internal developer platform, we are planning work to make the initial deployment easier.
+Mobu will play a role in performing self-checkout of these deployments; hence it will become a core phalanx service, like gafaelfawr.
+
 
 .. Make in-text citations with: :cite:`bibkey`.
 .. Uncomment to use citations
