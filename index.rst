@@ -213,15 +213,14 @@ Any metrics should arguably be dispatched to Sasquatch for self-evident dogfoodi
 Recommended
 -----------
 
-**Before:** There is no automated checking of future recommended candidates
+**Before:** There is no automated checking of *future* recommended candidates
 
 **After:** A candidate recommended starts being mobu'ed (at least on data-int) as soon as it is identified
 
-**Discussion:** This is easily achieved technically - question is how to indicate this. Another container tag?
+**Discussion:**
 
-
-
-
+We already mobu the latest (most recent) weekly; the problem is that due to the time it takes to identify, test and deploy a new recommended image, the latest weekly is no longer the candidate recommended.
+Given the amount of human attention involved in bumping recommended, adding the candidate to a mobu configuration explicitly is no less expedient that engineering a specific pattern such as tagging the container.
 
 .. Make in-text citations with: :cite:`bibkey`.
 .. Uncomment to use citations
