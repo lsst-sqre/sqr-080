@@ -1,6 +1,12 @@
-:tocdepth: 1
+###################################
+Health-check notebooks organisation
+###################################
 
-.. sectnum::
+.. abstract::
+
+   An organising structure for notebooks driven by mobu (and/or available for ad-hoc use) for the purposes of conducting system health checks. 
+
+
 
 .. Metadata such as the title, authors, and description are set in metadata.yaml
 
