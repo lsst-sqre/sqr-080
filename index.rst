@@ -262,3 +262,10 @@ Mobu will play a role in performing self-checkout of these deployments; hence it
 ..
 .. .. bibliography:: local.bib lsstbib/books.bib lsstbib/lsst.bib lsstbib/lsst-dm.bib lsstbib/refs.bib lsstbib/refs_ads.bib
 ..    :style: lsst_aa
+
+Documentation:
+--------------
+
+**Before:** Documentation is primarily in technotes; service deployment docs are in phalanx.lsst.io
+
+**After:** Create mobu.lsst.io documentation for developer (user) documentation. 
