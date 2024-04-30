@@ -263,9 +263,29 @@ Mobu will play a role in performing self-checkout of these deployments; hence it
 .. .. bibliography:: local.bib lsstbib/books.bib lsstbib/lsst.bib lsstbib/lsst-dm.bib lsstbib/refs.bib lsstbib/refs_ads.bib
 ..    :style: lsst_aa
 
-Documentation:
---------------
+Documentation
+-------------
 
 **Before:** Documentation is primarily in technotes; service deployment docs are in phalanx.lsst.io
 
 **After:** Create mobu.lsst.io documentation for developer (user) documentation. 
+
+Permissions
+-----------
+
+**Before:** Creating new mobu flocks on the fly requires ``exec:admin`` permissions because it allows creating tokens for arbitrary bot users with arbitrary scopes.
+This makes it hard for application developers to test new flocks or run ad hoc flocks (for load testing, for example).
+
+**After:** Provide some mechanism for application developers to test their flocks without needing ``exec:admin`` permissions, and to pause flocks when performing maintenance on their applications.
+
+**Discussion:**
+
+Originally, the design of mobu assumed people would use the REST API to start and stop flocks.
+We then added autostart to make the running mobu flocks configuration-driven, and now that's become the main way to use mobu.
+Ad hoc flocks are, however, still supported, and may be useful for application owers to test.
+
+Currently, application developers won't have any access to change the mobu configuration, since mobu is an infrastructure application.
+This means they'll require help getting their flocks started, and iterating on a flock using the autostart configuration and restarting mobu (what SQuaRE normally does) is not available to them.
+
+We need to rethink the interaction of the REST API and the Phalanx configuration for mobu, figure out where we want to put the relevant configuration, and probably figure out a better security model for manipulating running flocks.
+This probably includes additional operations on flocks as well, such as pausing a flock so that it still shows up in the daily report but reports as paused.

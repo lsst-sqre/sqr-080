@@ -4,13 +4,17 @@ series_id = "SQR"
 canonical_url = "https://sqr-080.lsst.io/"
 github_url = "https://github.com/lsst-sqre/sqr-080"
 github_default_branch = "main"
+date_created = 2023-12-27
+date_updated = 2024-04-29
 organization.name = "Vera C. Rubin Observatory"
 organization.ror = "https://ror.org/048g3cy84"
 license.id = "CC-BY-4.0"
+
 [[technote.authors]]
 name = {given = "Frossie", family = "Economou"}
 internal_id = "economouf"
 orcid = "https://orcid.org/0000-0002-8333-7615"
+
 [[technote.authors.affiliations]]
 name = "Rubin Observatory Project Office"
 internal_id = "RubinObs"
@@ -19,6 +23,7 @@ address = "950 N. Cherry Ave., Tucson, AZ 85719, USA"
 [[technote.authors]]
 name = {given = "Russ", family = "Allbery"}
 internal_id = "allberyr"
+
 [[technote.authors.affiliations]]
 name = "Rubin Observatory Project Office"
 internal_id = "RubinObs"
