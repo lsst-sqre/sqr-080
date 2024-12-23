@@ -99,6 +99,10 @@ mobu would run the nublado notebooks but not attempt the tap one.
 
 The advantage of this approach is that developers can check in new notebooks for services without necessitating mobu changes.
 
+**Status:**
+
+https://mobu.lsst.io/user_guide/in_repo_config.html#service-specific-notebooks
+
 Notebook caching (or not)
 -------------------------
 
@@ -114,7 +118,7 @@ We could manually invoke an API or refresh on a timer, but a notebook on-merge i
 We still need to re-read on mobu (re-)start; this will be the only way to pick up notebook changes in sites without in-bound internet (eg the summit).
 It is a feature for the summit mobu's behavior to remain stable until manual intervention in any case.
 
-
+**Status:** https://mobu.lsst.io/user_guide/github/refresh.html
 
 Reliance on specific data holdings
 ----------------------------------
@@ -144,6 +148,7 @@ Branches
 The need to maintain two different branches has been eliminated with mobu's ability to easily be configured to run off different branches for cases where it is useful to have an "in-development" version deployed.
 Hence cherry-picking is just annoying with no particular benefit.
 
+
 Outputs
 -------
 
@@ -157,6 +162,8 @@ Having the human remember to clear outputs before saving and checking in is erro
 Ideally something like https://github.com/srstevenson/nb-clean would be integrated in the development workflow.
 
 This may also be of use to other notebook repo maintainers.
+
+**Status:** There is a pre-commit hook and a Github action that runs the pre-commit hook for system-test. 
 
 
 Write-Only (or not)
@@ -176,6 +183,8 @@ This means a user will have easy access to these additional repos without clutte
 
 Mobu bot users check notebooks directly from Github and hence will not be affected by this.
 
+**Status:** We have resolved this by the new tutorial pull mechanism
+
 Directories
 -----------
 
@@ -193,6 +202,10 @@ Reasons for opting for a directory exclusion list include:
 - An exclusion manifest at directory granularity is less hassle than per-notebook (less bookkeeping when renaming, etc)
 - Whether to run or not is self-serve for repo maintainers and does not involve phalanx PRs.
 
+**Status:** 
+
+https://mobu.lsst.io/user_guide/in_repo_config.html#exclude-notebooks-in-specific-directories
+
 Summit
 ------
 
@@ -203,6 +216,7 @@ Summit
 **Discussion:**
 
 These had better be passive, we don't want to move the telescope or anything.... We should check what if any protections there are for this, eg is there further authorisation required to perform certain tasks
+
 
 Timing
 ------
@@ -217,6 +231,9 @@ This has been controversial in discussion with the reasonable argument that note
 
 Any metrics should arguably be dispatched to Sasquatch for self-evident dogfooding purposes.
 
+**Status:** 
+
+Handled in the new metrics system [screenshot]
 
 Recommended
 -----------
@@ -230,6 +247,10 @@ Recommended
 We already mobu the latest (most recent) weekly; the problem is that due to the time it takes to identify, test and deploy a new recommended image, the latest weekly is no longer the candidate recommended.
 Given the amount of human attention involved in bumping recommended, adding the candidate to a mobu configuration explicitly is no less expedient that engineering a specific pattern such as tagging the container.
 
+**Status:** 
+
+[document process]
+
 Mobu as CI
 ----------
 
@@ -241,6 +262,10 @@ Mobu as CI
 
 Humans are doing right now what the computer can do.
 We want to allow notebook contributors to see errors before they go to production.
+
+**Status:**
+
+https://mobu.lsst.io/user_guide/github/ci.html
 
 Mobu's role in phalanx
 ----------------------
@@ -270,6 +295,10 @@ Documentation
 
 **After:** Create mobu.lsst.io documentation for developer (user) documentation. 
 
+**Status:**
+
+https://mobu.lsst.io
+
 Permissions
 -----------
 
@@ -289,3 +318,4 @@ This means they'll require help getting their flocks started, and iterating on a
 
 We need to rethink the interaction of the REST API and the Phalanx configuration for mobu, figure out where we want to put the relevant configuration, and probably figure out a better security model for manipulating running flocks.
 This probably includes additional operations on flocks as well, such as pausing a flock so that it still shows up in the daily report but reports as paused.
+
