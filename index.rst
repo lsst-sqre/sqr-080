@@ -4,7 +4,7 @@ Health-check notebooks organisation and mobu roadmap
 
 .. abstract::
 
-   An organising structure for notebooks driven by mobu (and/or available for ad-hoc use) for the purposes of conducting system health checks. 
+   An organising structure for notebooks driven by mobu (and/or available for ad-hoc use) for the purposes of conducting system health checks.
 
 
 
@@ -99,9 +99,11 @@ mobu would run the nublado notebooks but not attempt the tap one.
 
 The advantage of this approach is that developers can check in new notebooks for services without necessitating mobu changes.
 
-**Status:**
+**Outcome:**
 
-https://mobu.lsst.io/user_guide/in_repo_config.html#service-specific-notebooks
+Mobu now finds the list of phalanx applications are enabled in a given phalanx environment from the ArgoCD configuration.
+Notebook metadata can be annotated with the name of a service to ensure the notebook is not run if the service is not expected to be available.
+See `the relevant mobu documentation` <https://mobu.lsst.io/user_guide/in_repo_config.html#service-specific-notebooks>`_ for how to do this.
 
 Notebook caching (or not)
 -------------------------
@@ -118,7 +120,10 @@ We could manually invoke an API or refresh on a timer, but a notebook on-merge i
 We still need to re-read on mobu (re-)start; this will be the only way to pick up notebook changes in sites without in-bound internet (eg the summit).
 It is a feature for the summit mobu's behavior to remain stable until manual intervention in any case.
 
-**Status:** https://mobu.lsst.io/user_guide/github/refresh.html
+**Outcome:**
+
+A (per environment) ``mobu refresh`` Github App has eliminated the need to restart mobu when changing configured pay load repos.
+See `the relevant mobu documentation` <https://mobu.lsst.io/user_guide/github/refresh.html>`_ for how to do this.
 
 Reliance on specific data holdings
 ----------------------------------
@@ -163,7 +168,9 @@ Ideally something like https://github.com/srstevenson/nb-clean would be integrat
 
 This may also be of use to other notebook repo maintainers.
 
-**Status:** There is a pre-commit hook and a Github action that runs the pre-commit hook for system-test. 
+**Outcome:**
+
+There is a pre-commit hook (and a Github action that runs the pre-commit hook) installed in system-test (and can be installed in other payload repos) that automatically clears outputs from notebooks before they are committed.
 
 
 Write-Only (or not)
@@ -183,7 +190,9 @@ This means a user will have easy access to these additional repos without clutte
 
 Mobu bot users check notebooks directly from Github and hence will not be affected by this.
 
-**Status:** We have resolved this by the new tutorial pull mechanism
+**Outcome:**
+
+We have resolved this by the new tutorial pull mechanism that populates tutorian notebooks on request and abandons the git checkout model.
 
 Directories
 -----------
@@ -202,9 +211,10 @@ Reasons for opting for a directory exclusion list include:
 - An exclusion manifest at directory granularity is less hassle than per-notebook (less bookkeeping when renaming, etc)
 - Whether to run or not is self-serve for repo maintainers and does not involve phalanx PRs.
 
-**Status:** 
+**Outcome:**
 
-https://mobu.lsst.io/user_guide/in_repo_config.html#exclude-notebooks-in-specific-directories
+ A configuration file in the payload repo can be used to (recursively) exclude sub-directories.
+ See `the relevant mobu documentation` <https://mobu.lsst.io/user_guide/in_repo_config.html#exclude-notebooks-in-specific-directories>`_ for how to do this.
 
 Summit
 ------
@@ -231,9 +241,16 @@ This has been controversial in discussion with the reasonable argument that note
 
 Any metrics should arguably be dispatched to Sasquatch for self-evident dogfooding purposes.
 
-**Status:** 
+**Outcome:**
 
-Handled in the new metrics system [screenshot]
+This functionality has been provided by the new phalanx metrics system. See
+:ref:`the figure <fig-metrics>` below
+
+.. figure:: /_static/metrics.png
+    :name: fig-metrics
+    :target: http://target.link/url
+
+    Maximum (worst-case) duration for the (successful) execution of a tutorial notebook demonstrating catalog queries with Qserv.
 
 Recommended
 -----------
@@ -247,7 +264,7 @@ Recommended
 We already mobu the latest (most recent) weekly; the problem is that due to the time it takes to identify, test and deploy a new recommended image, the latest weekly is no longer the candidate recommended.
 Given the amount of human attention involved in bumping recommended, adding the candidate to a mobu configuration explicitly is no less expedient that engineering a specific pattern such as tagging the container.
 
-**Status:** 
+**Status:**
 
 [document process]
 
@@ -293,7 +310,7 @@ Documentation
 
 **Before:** Documentation is primarily in technotes; service deployment docs are in phalanx.lsst.io
 
-**After:** Create mobu.lsst.io documentation for developer (user) documentation. 
+**After:** Create mobu.lsst.io documentation for developer (user) documentation.
 
 **Status:**
 
