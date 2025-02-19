@@ -280,9 +280,9 @@ Mobu as CI
 Humans are doing right now what the computer can do.
 We want to allow notebook contributors to see errors before they go to production.
 
-**Status:**
+**Outcome:**
 
-https://mobu.lsst.io/user_guide/github/ci.html
+You can now run notebooks in mobu as part of Github CI. Documentation `here <https://mobu.lsst.io/user_guide/github/ci.html>`_
 
 Mobu's role in phalanx
 ----------------------
@@ -312,9 +312,9 @@ Documentation
 
 **After:** Create mobu.lsst.io documentation for developer (user) documentation.
 
-**Status:**
+**Outcome:**
 
-https://mobu.lsst.io
+Complete mobu documentation at `mobu.lsst.io <https://mobu.lsst.io>`_
 
 Permissions
 -----------
