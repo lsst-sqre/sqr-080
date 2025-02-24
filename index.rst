@@ -4,7 +4,7 @@ Health-check notebooks organisation and mobu roadmap
 
 .. abstract::
 
-   An organising structure for notebooks driven by mobu (and/or available for ad-hoc use) for the purposes of conducting system health checks. 
+   An organising structure for notebooks driven by mobu (and/or available for ad-hoc use) for the purposes of conducting system health checks.
 
 
 
@@ -99,6 +99,12 @@ mobu would run the nublado notebooks but not attempt the tap one.
 
 The advantage of this approach is that developers can check in new notebooks for services without necessitating mobu changes.
 
+**Outcome:**
+
+Mobu now finds the list of phalanx applications are enabled in a given phalanx environment from the ArgoCD configuration.
+Notebook metadata can be annotated with the name of a service to ensure the notebook is not run if the service is not expected to be available.
+See `the relevant mobu documentation` <https://mobu.lsst.io/user_guide/in_repo_config.html#service-specific-notebooks>`_ for how to do this.
+
 Notebook caching (or not)
 -------------------------
 
@@ -114,7 +120,10 @@ We could manually invoke an API or refresh on a timer, but a notebook on-merge i
 We still need to re-read on mobu (re-)start; this will be the only way to pick up notebook changes in sites without in-bound internet (eg the summit).
 It is a feature for the summit mobu's behavior to remain stable until manual intervention in any case.
 
+**Outcome:**
 
+A (per environment) ``mobu refresh`` Github App has eliminated the need to restart mobu when changing configured pay load repos.
+See `the relevant mobu documentation` <https://mobu.lsst.io/user_guide/github/refresh.html>`_ for how to do this.
 
 Reliance on specific data holdings
 ----------------------------------
@@ -144,6 +153,7 @@ Branches
 The need to maintain two different branches has been eliminated with mobu's ability to easily be configured to run off different branches for cases where it is useful to have an "in-development" version deployed.
 Hence cherry-picking is just annoying with no particular benefit.
 
+
 Outputs
 -------
 
@@ -157,6 +167,10 @@ Having the human remember to clear outputs before saving and checking in is erro
 Ideally something like https://github.com/srstevenson/nb-clean would be integrated in the development workflow.
 
 This may also be of use to other notebook repo maintainers.
+
+**Outcome:**
+
+There is a pre-commit hook (and a Github action that runs the pre-commit hook) installed in system-test (and can be installed in other payload repos) that automatically clears outputs from notebooks before they are committed.
 
 
 Write-Only (or not)
@@ -176,6 +190,10 @@ This means a user will have easy access to these additional repos without clutte
 
 Mobu bot users check notebooks directly from Github and hence will not be affected by this.
 
+**Outcome:**
+
+We have resolved this by the new tutorial pull mechanism that populates tutorial notebooks on request and abandons the git checkout model.
+
 Directories
 -----------
 
@@ -193,6 +211,11 @@ Reasons for opting for a directory exclusion list include:
 - An exclusion manifest at directory granularity is less hassle than per-notebook (less bookkeeping when renaming, etc)
 - Whether to run or not is self-serve for repo maintainers and does not involve phalanx PRs.
 
+**Outcome:**
+
+ A configuration file in the payload repo can be used to (recursively) exclude sub-directories.
+ See `the relevant mobu documentation` <https://mobu.lsst.io/user_guide/in_repo_config.html#exclude-notebooks-in-specific-directories>`_ for how to do this.
+
 Summit
 ------
 
@@ -203,6 +226,7 @@ Summit
 **Discussion:**
 
 These had better be passive, we don't want to move the telescope or anything.... We should check what if any protections there are for this, eg is there further authorisation required to perform certain tasks
+
 
 Timing
 ------
@@ -217,6 +241,16 @@ This has been controversial in discussion with the reasonable argument that note
 
 Any metrics should arguably be dispatched to Sasquatch for self-evident dogfooding purposes.
 
+**Outcome:**
+
+This functionality has been provided by the new phalanx metrics system. See
+:ref:`the figure <fig-metrics>` below
+
+.. figure:: /_static/metrics.png
+    :name: fig-metrics
+    :target: http://target.link/url
+
+    Maximum (worst-case) duration for the (successful) execution of a tutorial notebook demonstrating catalog queries with Qserv.
 
 Recommended
 -----------
@@ -230,6 +264,10 @@ Recommended
 We already mobu the latest (most recent) weekly; the problem is that due to the time it takes to identify, test and deploy a new recommended image, the latest weekly is no longer the candidate recommended.
 Given the amount of human attention involved in bumping recommended, adding the candidate to a mobu configuration explicitly is no less expedient that engineering a specific pattern such as tagging the container.
 
+**Status:**
+
+[document process]
+
 Mobu as CI
 ----------
 
@@ -241,6 +279,10 @@ Mobu as CI
 
 Humans are doing right now what the computer can do.
 We want to allow notebook contributors to see errors before they go to production.
+
+**Outcome:**
+
+You can now run notebooks in mobu as part of Github CI. Documentation `here <https://mobu.lsst.io/user_guide/github/ci.html>`_
 
 Mobu's role in phalanx
 ----------------------
@@ -268,7 +310,11 @@ Documentation
 
 **Before:** Documentation is primarily in technotes; service deployment docs are in phalanx.lsst.io
 
-**After:** Create mobu.lsst.io documentation for developer (user) documentation. 
+**After:** Create mobu.lsst.io documentation for developer (user) documentation.
+
+**Outcome:**
+
+Complete mobu documentation at `mobu.lsst.io <https://mobu.lsst.io>`_
 
 Permissions
 -----------
@@ -289,3 +335,4 @@ This means they'll require help getting their flocks started, and iterating on a
 
 We need to rethink the interaction of the REST API and the Phalanx configuration for mobu, figure out where we want to put the relevant configuration, and probably figure out a better security model for manipulating running flocks.
 This probably includes additional operations on flocks as well, such as pausing a flock so that it still shows up in the daily report but reports as paused.
+
