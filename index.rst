@@ -192,7 +192,7 @@ Mobu bot users check notebooks directly from Github and hence will not be affect
 
 **Outcome:**
 
-We have resolved this by the new tutorial pull mechanism that populates tutorian notebooks on request and abandons the git checkout model.
+We have resolved this by the new tutorial pull mechanism that populates tutorial notebooks on request and abandons the git checkout model.
 
 Directories
 -----------
