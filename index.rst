@@ -103,7 +103,7 @@ The advantage of this approach is that developers can check in new notebooks for
 
 Mobu now finds the list of phalanx applications are enabled in a given phalanx environment from the ArgoCD configuration.
 Notebook metadata can be annotated with the name of a service to ensure the notebook is not run if the service is not expected to be available.
-See `the relevant mobu documentation` <https://mobu.lsst.io/user-guide/in-repo-config.html#service-specific-notebooks>`_ for how to do this.
+See `the relevant mobu documentation <https://mobu.lsst.io/user-guide/in-repo-config.html#service-specific-notebooks>`__ for how to do this.
 
 Notebook caching (or not)
 -------------------------
@@ -123,7 +123,7 @@ It is a feature for the summit mobu's behavior to remain stable until manual int
 **Outcome:**
 
 A (per environment) ``mobu refresh`` Github App has eliminated the need to restart mobu when changing configured pay load repos.
-See `the relevant mobu documentation` <https://mobu.lsst.io/user_guide/github/refresh.html>`_ for how to do this.
+See `the relevant mobu documentation <https://mobu.lsst.io/user-guide/github/refresh.html>`__ for how to do this.
 
 Reliance on specific data holdings
 ----------------------------------
@@ -213,8 +213,8 @@ Reasons for opting for a directory exclusion list include:
 
 **Outcome:**
 
- A configuration file in the payload repo can be used to specifically include or exclude notebooks and directories.
- See `the relevant mobu documentation` <https://mobu.lsst.io/user-guide/in-repo-config.html#specify-which-notebooks-to-run>`_ for how to do this.
+A configuration file in the payload repo can be used to (recursively) exclude sub-directories.
+See `the relevant mobu documentation <https://mobu.lsst.io/user-guide/in-repo-config.html#specify-which-notebooks-to-run>`__ for how to do this.
 
 Summit
 ------
@@ -282,7 +282,7 @@ We want to allow notebook contributors to see errors before they go to productio
 
 **Outcome:**
 
-You can now run notebooks in mobu as part of Github CI. Documentation `here <https://mobu.lsst.io/user_guide/github/ci.html>`_
+You can now run notebooks in mobu as part of Github CI. Documentation `here <https://mobu.lsst.io/user-guide/github/ci.html>`_
 
 Mobu's role in phalanx
 ----------------------
