@@ -103,7 +103,7 @@ The advantage of this approach is that developers can check in new notebooks for
 
 Mobu now finds the list of phalanx applications are enabled in a given phalanx environment from the ArgoCD configuration.
 Notebook metadata can be annotated with the name of a service to ensure the notebook is not run if the service is not expected to be available.
-See `the relevant mobu documentation` <https://mobu.lsst.io/user_guide/in_repo_config.html#service-specific-notebooks>`_ for how to do this.
+See `the relevant mobu documentation` <https://mobu.lsst.io/user-guide/in-repo-config.html#service-specific-notebooks>`_ for how to do this.
 
 Notebook caching (or not)
 -------------------------
@@ -213,8 +213,8 @@ Reasons for opting for a directory exclusion list include:
 
 **Outcome:**
 
- A configuration file in the payload repo can be used to (recursively) exclude sub-directories.
- See `the relevant mobu documentation` <https://mobu.lsst.io/user_guide/in_repo_config.html#exclude-notebooks-in-specific-directories>`_ for how to do this.
+ A configuration file in the payload repo can be used to specifically include or exclude notebooks and directories.
+ See `the relevant mobu documentation` <https://mobu.lsst.io/user-guide/in-repo-config.html#specify-which-notebooks-to-run>`_ for how to do this.
 
 Summit
 ------
